@@ -36,8 +36,8 @@ vscode.install
 WhatsApp
 yarn
 # spotify
-" -split [System.Environment]::NewLine   | Where-Object { -not $_.StartsWith('#') -and -not [System.String]::IsNullOrWhiteSpace($_) }
+" -split [System.Environment]::NewLine | Where-Object { -not $_.StartsWith('#') -and -not [System.String]::IsNullOrWhiteSpace($_) }
 
 foreach ($item in $lines) {
-    choco install $item -y --ignorechecksum
+    choco install $item.Trim() -y --ignorechecksum
 }
