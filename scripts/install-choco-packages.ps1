@@ -34,8 +34,8 @@ tor-browser
 totalcommander
 vscode.install
 WhatsApp
-yarn
 # spotify
+yarn
 " -split [System.Environment]::NewLine | Where-Object { -not $_.StartsWith('#') -and -not [System.String]::IsNullOrWhiteSpace($_) }
 
 foreach ($item in $lines) {
