@@ -87,15 +87,16 @@ blocks:
           style: dallas
         style: diamond
         leading_diamond: 
-        template: ' {{ .FormattedMs }}s '
-        background: '#5db7fc'
+        trailing_diamond: 
+        template: ' {{ .FormattedMs }}s'
+        background: '#5ab5fb'
         foreground: '#fff'
 
       - type: time
         properties:
           time_format: "\ue641 15:04:05"
-        template: ' {{ .CurrentDate | date .Format }} '
-        leading_diamond: "\ue0b2"
+        template: '{{ .CurrentDate | date .Format }} '
+        leading_diamond: ' '
         style: diamond
         background: '#407faf'
         foreground: '#fff'
@@ -104,7 +105,7 @@ blocks:
         properties:
           time_format: "\uf073 2006-01-02"
         template: ' {{ .CurrentDate | date .Format }}'
-        leading_diamond: "\ue0b2"
+        leading_diamond: "\ue0ba"
         trailing_diamond: 
         style: diamond
         background: '#244762'
