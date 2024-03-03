@@ -91,7 +91,7 @@ blocks:
         leading_diamond: 
         trailing_diamond: 
         template: ' {{ .FormattedMs }}s'
-        background: '#5ab5fb'
+        background: '#4d9fdf'
         foreground: '#fff'
 
       - type: time
