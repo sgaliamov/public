@@ -2,9 +2,9 @@ blocks:
   - alignment: left
     type: prompt
     segments:
-      - background: '#01579B'
+      - background: '#01579b'
         foreground: '#ffffff'
-        leading_diamond: '<transparent,#01579B></>'
+        leading_diamond: '<transparent,#01579b></>'
         properties:
           folder_separator_icon: '<transparent>  </>'
           style: agnoster_full
@@ -14,26 +14,28 @@ blocks:
 
       - background: '#00C853'
         background_templates:
-          - '{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}'
-          - '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}'
-          - '{{ if gt .Ahead 0 }}#B388FF{{ end }}'
-          - '{{ if gt .Behind 0 }}#B388FF{{ end }}'
+          - '{{ if or (.Working.Changed) (.Staging.Changed) }}#ffeb3b{{ end }}'
+          - '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ffcc80{{ end }}'
+          - '{{ if gt .Ahead 0 }}#b388ff{{ end }}'
+          - '{{ if gt .Behind 0 }}#b388ff{{ end }}'
         foreground: '#000000'
         powerline_symbol: 
         properties:
           fetch_stash_count: true
           fetch_status: true
         style: powerline
-        template:
-          ' {{ .HEAD }}{{ if .Staging.Changed }}<#FF6F00>  {{ .Staging.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{
-          if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+        template: ' {{ .HEAD }}{{
+          if .Staging.Changed }}<#FF6F00>  {{ .Staging.String }}</>{{ end }}{{
+          if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{
+          if .Working.Changed }}  {{ .Working.String }}{{ end }}{{
+          if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
         type: git
 
       - type: docker
         style: powerline
         powerline_symbol: 
         foreground: '#000000'
-        background: '#0B59E7'
+        background: '#0b59e7'
         template: '  {{ .Context }} '
       - type: dotnet
         style: powerline
@@ -63,7 +65,7 @@ blocks:
         style: powerline
         powerline_symbol: 
         background: '#000000'
-        foreground: '#FE4A49'
+        foreground: '#fe4a49'
         template: '  '
       - type: project
         style: powerline
