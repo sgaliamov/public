@@ -8,61 +8,11 @@ blocks:
           style: agnoster_full
           home_icon: 󰚡
         template: ' {{ .Path }} '
-        style: powerline
-        powerline_symbol: 
+        style: diamond
+        leading_diamond: '<transparent>'
+        trailing_diamond: 
         background: '#78B5EE'
         foreground: '#23282b'
-
-
-      - type: docker
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        foreground: '#23282b'
-        background: '#0b59e7'
-        template: ' {{ .Context }}'
-      - type: dotnet
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        foreground: '#000000'
-        background: '#00ffff'
-        template: 
-      - type: node
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        background: '#23282b'
-        foreground: '#45bf17'
-        template: 
-      - type: rust
-        style: powerline
-        powerline_symbol: 
-        foreground: '#193549'
-        background: '#99908a'
-        template: ' </> '
-
-      - type: lua
-        template: ' </> '
-        style: powerline
-        powerline_symbol: 
-        foreground: '#ECEDEA'
-        background: blue
-
-      - type: npm
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        background: '#000000'
-        foreground: '#fe4a49'
-        template: 
-
-      - type: project
-        style: powerline
-        powerline_symbol: 
-        foreground: '#193549'
-        background: '#ffeb3b'
-        template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }} {{ if .Name }}{{ .Name }}{{ end }}{{ end }} '
 
       - type: git
         properties:
@@ -79,16 +29,17 @@ blocks:
           - '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ffcc80{{ end }}'
           - '{{ if gt .Ahead 0 }}#b388ff{{ end }}'
           - '{{ if gt .Behind 0 }}#b388ff{{ end }}'
-        style: powerline
-        powerline_symbol: 
+        style: diamond
+        trailing_diamond: 
         background: '#00c853'
         foreground: '#23282b'
 
       - background: '#910000'
-        foreground: '#23282b'
-        powerline_symbol: 
-        style: powerline
-        template: ' {{ reason .Code }} '
+        foreground: '#ECEDEA'
+        style: diamond
+        leading_diamond: 
+        trailing_diamond: 
+        template: ' 󰯆 {{ reason .Code }} '
         type: status
 
   - alignment: right
@@ -98,28 +49,67 @@ blocks:
         properties:
           style: dallas
         style: diamond
-        leading_diamond: 
-        trailing_diamond: 
-        template: ' {{ .FormattedMs }}s'
-        background: '#4d9fdf'
-        foreground: '#fff'
+        leading_diamond: 
+        trailing_diamond: 
+        template: '  {{ .FormattedMs }}s '
+        background: '#D9B0D6'
+        foreground: '#23282b'
+
+      - type: dotnet
+        style: diamond
+        leading_diamond: 
+        foreground: '#ECEDEA'
+        background: '#512bd4'
+        template: '  {{ .Full }} '
+      - type: node
+        style: diamond
+        leading_diamond: 
+        background: '#5fa04e'
+        foreground: "#ECEDEA"
+        template: '  {{ .Full }} '
+      - type: npm
+        style: diamond
+        leading_diamond: 
+        background: "#ECEDEA"
+        foreground: "#ca0000"
+      - type: rust
+        style: diamond
+        leading_diamond: 
+        foreground: '#193549'
+        background: '#99908a'
+        template: '  '
+      - type: lua
+        template: '  '
+        style: diamond
+        leading_diamond: 
+        trailing_diamond: 
+        foreground: '#ECEDEA'
+        background: blue
+
+      - type: project
+        style: diamond
+        leading_diamond: 
+        trailing_diamond: 
+        foreground: '#193549'
+        background: '#ffeb3b'
+        template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ if not .Version }}󰣙 {{ end }}{{ .Name }}{{ end }}{{ end }} '
 
       - type: time
         properties:
           time_format: "\ue641 15:04:05"
-        template: '{{ .CurrentDate | date .Format }} '
+        template: ' {{ .CurrentDate | date .Format }} '
         style: diamond
-        leading_diamond: ' '
+        leading_diamond: 
         background: '#4D8EC4'
         foreground: '#23282b'
 
       - type: time
         properties:
           time_format: "\uf073 2006-01-02"
-        template: ' {{ .CurrentDate | date .Format }}'
+        template: ' {{ .CurrentDate | date .Format }} '
         style: diamond
-        leading_diamond: "\ue0ba"
-        trailing_diamond: 
+        leading_diamond: 
+        trailing_diamond: '<transparent>'
         background: '#748EB7'
         foreground: '#23282b'
 
@@ -129,10 +119,10 @@ blocks:
       - type: status
         properties:
           always_enabled: true
-        template: "{{if .Root}}{{else}} 󰘧 {{end}}"
+        template: "{{if .Root}} {{else}}󰘧 {{end}}"
         foreground_templates:
           - '{{ if gt .Code 0 }}#ff0000{{ end }}'
-        foreground: '#ECEDEA'
+        foreground: '#748EB7'
 
     type: prompt
 
