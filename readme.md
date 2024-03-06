@@ -14,8 +14,8 @@ Install:
 choco install oh-my-posh
 ```
 
-Put in `$PROFILE`:
+Add into `$PROFILE`:
 
 ``` pwsh
-oh-my-posh init pwsh --config "https://raw.githubusercontent.com/sgaliamov/public/master/configs/ohmyposh.yaml" | Invoke-Expression
+oh-my-posh init pwsh --config "https://raw.githubusercontent.com/sgaliamov/public/master/configs/yoko.omp.yaml" | Invoke-Expression
 ```
