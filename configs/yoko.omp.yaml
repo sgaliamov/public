@@ -4,20 +4,65 @@ blocks:
     segments:
       - type: path
         properties:
-          folder_separator_icon: '<transparent>  </>'
+          folder_separator_icon: '<transparent>  </>'
           style: agnoster_full
-        template: '  <transparent>  <{{ .Path }} '
+          home_icon: 󰚡
+        template: ' {{ .Path }} '
         style: powerline
-        powerline_symbol: 
-        background: '#F9D2B2'
-        foreground: '#2E3245'
+        powerline_symbol: 
+        background: '#78B5EE'
+        foreground: '#23282b'
+
+
+      - type: docker
+        style: diamond
+        leading_diamond: ' '
+        trailing_diamond: 
+        foreground: '#23282b'
+        background: '#0b59e7'
+        template: ' {{ .Context }}'
+      - type: dotnet
+        style: diamond
+        leading_diamond: ' '
+        trailing_diamond: 
+        foreground: '#000000'
+        background: '#00ffff'
+        template: 
+      - type: node
+        style: diamond
+        leading_diamond: ' '
+        trailing_diamond: 
+        background: '#23282b'
+        foreground: '#45bf17'
+        template: 
+      - type: rust
+        style: powerline
+        powerline_symbol: 
+        foreground: '#193549'
+        background: '#99908a'
+        template: ' </> '
 
       - type: lua
-        template: ' <transparent></> '
+        template: ' </> '
         style: powerline
-        powerline_symbol: 
-        foreground: '#2e3245'
+        powerline_symbol: 
+        foreground: '#ECEDEA'
         background: blue
+
+      - type: npm
+        style: diamond
+        leading_diamond: ' '
+        trailing_diamond: 
+        background: '#000000'
+        foreground: '#fe4a49'
+        template: 
+
+      - type: project
+        style: powerline
+        powerline_symbol: 
+        foreground: '#193549'
+        background: '#ffeb3b'
+        template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }} {{ if .Name }}{{ .Name }}{{ end }}{{ end }} '
 
       - type: git
         properties:
@@ -25,7 +70,7 @@ blocks:
           branch_icon: ' '
           fetch_status: true
         template: ' {{ .HEAD }}{{
-          if .Staging.Changed }}<#ff6f00>  {{ .Staging.String }}</>{{ end }}{{
+          if .Staging.Changed }}<#23282b>  {{ .Staging.String }}</>{{ end }}{{
           if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{
           if .Working.Changed }}  {{ .Working.String }}{{ end }}{{
           if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
@@ -37,10 +82,10 @@ blocks:
         style: powerline
         powerline_symbol: 
         background: '#00c853'
-        foreground: '#2e3245'
+        foreground: '#23282b'
 
       - background: '#910000'
-        foreground: '#2e3245'
+        foreground: '#23282b'
         powerline_symbol: 
         style: powerline
         template: ' {{ reason .Code }} '
@@ -59,63 +104,14 @@ blocks:
         background: '#4d9fdf'
         foreground: '#fff'
 
-      - type: docker
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        foreground: '#2e3245'
-        background: '#0b59e7'
-        template: ' {{ .Context }}'
-      - type: dotnet
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        foreground: '#000000'
-        background: '#00ffff'
-        template: 
-      - type: node
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        background: '#2e3245'
-        foreground: '#45bf17'
-        template: 
-      - type: rust
-        style: powerline
-        powerline_symbol: 
-        foreground: '#193549'
-        background: '#99908a'
-        template: '  '
-      - type: lua
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        foreground: white
-        background: blue
-        template: 
-      - type: npm
-        style: diamond
-        leading_diamond: ' '
-        trailing_diamond: 
-        background: '#000000'
-        foreground: '#fe4a49'
-        template: 
-
-      - type: project
-        style: powerline
-        powerline_symbol: 
-        foreground: '#193549'
-        background: '#ffeb3b'
-        template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }} {{ if .Name }}{{ .Name }}{{ end }}{{ end }} '
-
       - type: time
         properties:
           time_format: "\ue641 15:04:05"
         template: '{{ .CurrentDate | date .Format }} '
         style: diamond
         leading_diamond: ' '
-        background: '#F9D2B2'
-        foreground: '#2E3245'
+        background: '#4D8EC4'
+        foreground: '#23282b'
 
       - type: time
         properties:
@@ -124,21 +120,22 @@ blocks:
         style: diamond
         leading_diamond: "\ue0ba"
         trailing_diamond: 
-        background: '#F9C4CB'
-        foreground: '#2E3245'
+        background: '#748EB7'
+        foreground: '#23282b'
 
   - alignment: left
     newline: true
     segments:
-      - foreground: green
-        foreground_templates:
-          - '{{ if gt .Code 0 }}#ff0000{{ end }}'
+      - type: status
         properties:
           always_enabled: true
-        style: plain
-        template: '{{if .Root}} {{else}}󰘧 {{end}}'
-        type: status
+        template: "{{if .Root}}{{else}} 󰘧 {{end}}"
+        foreground_templates:
+          - '{{ if gt .Code 0 }}#ff0000{{ end }}'
+        foreground: '#ECEDEA'
+
     type: prompt
 
 console_title_template: '{{.Folder}}'
+
 version: 2
