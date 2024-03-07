@@ -38,7 +38,7 @@ blocks:
         style: powerline
         powerline_symbol: 
         background: '#9d400b'
-        foreground: '#ffffff'
+        foreground: '#fefefe'
 
   - alignment: right
     type: prompt
@@ -88,8 +88,8 @@ blocks:
         style: diamond
         leading_diamond: 
         trailing_diamond: 
-        foreground: '#193549'
         background: '#ffeb3b'
+        foreground: '#0e0b06'
         template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ if not .Version }}󰣙 {{ end }}{{ .Name }}{{ end }}{{ end }} '
 
       - type: time
@@ -130,4 +130,3 @@ version: 2
 # #0e0b06 dark text
 # #fefae0 light text
 # #9d400b error bg
-# #0b689d error text
