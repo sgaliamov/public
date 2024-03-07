@@ -6,12 +6,12 @@ blocks:
         properties:
           folder_separator_icon: '<transparent>  </>'
           style: agnoster_full
-        template: ' {{ .Path }} '
+        template: ' {{if .Root}}󱐋{{else}}{{end}} {{ .Path }} '
         style: diamond
         leading_diamond: '<transparent>'
         trailing_diamond: 
         background: '#23513c'
-        foreground: '#fefae0'
+        foreground: '#fefaea'
 
       - type: git
         properties:
@@ -38,7 +38,7 @@ blocks:
         style: powerline
         powerline_symbol: 
         background: '#9d400b'
-        foreground: '#fefefe'
+        foreground: '#fefaea'
 
   - alignment: right
     type: prompt
@@ -58,17 +58,17 @@ blocks:
         style: diamond
         leading_diamond: 
         background: '#512bd4'
-        foreground: '#fefae0'
+        foreground: '#fefaea'
       - type: node
         template: '  {{ .Full }} '
         style: diamond
         leading_diamond: 
         background: '#5fa04e'
-        foreground: '#fefae0'
+        foreground: '#fefaea'
       - type: npm
         style: diamond
         leading_diamond: 
-        background: '#fefae0'
+        background: '#fefaea'
         foreground: '#ca0000'
       - type: rust
         template: '  {{ .Full }}'
@@ -82,7 +82,7 @@ blocks:
         leading_diamond: 
         trailing_diamond: 
         background: blue
-        foreground: '#fefae0'
+        foreground: '#fefaea'
 
       - type: project
         style: diamond
@@ -118,7 +118,7 @@ blocks:
       - type: status
         properties:
           always_enabled: true
-        template: '{{if .Root}}󰀫 {{else}}󰘧 {{end}}'
+        template: ' '
         foreground: '#678d58'
 
 console_title_template: '{{.Folder}}'
@@ -128,5 +128,5 @@ version: 2
 # #23513c main
 # #678d58 secondary
 # #0e0b06 dark text
-# #fefae0 light text
+# #fefaea light text
 # #9d400b error bg
