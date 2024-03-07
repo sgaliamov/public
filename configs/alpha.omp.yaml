@@ -6,13 +6,12 @@ blocks:
         properties:
           folder_separator_icon: '<transparent>  </>'
           style: agnoster_full
-          home_icon: 󰚡
         template: ' {{ .Path }} '
         style: diamond
         leading_diamond: '<transparent>'
         trailing_diamond: 
-        background: '#78B5EE'
-        foreground: '#23282b'
+        background: '#23513c'
+        foreground: '#fefae0'
 
       - type: git
         properties:
@@ -20,27 +19,26 @@ blocks:
           branch_icon: ' '
           fetch_status: true
         template: ' {{ .HEAD }}{{
-          if .Staging.Changed }}<#23282b>  {{ .Staging.String }}</>{{ end }}{{
+          if .Staging.Changed }}  {{ .Staging.String }}</>{{ end }}{{
           if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{
           if .Working.Changed }}  {{ .Working.String }}{{ end }}{{
           if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+        style: diamond
+        trailing_diamond: 
         background_templates:
           - '{{ if or (.Working.Changed) (.Staging.Changed) }}#f7e2b2{{ end }}'
           - '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ffcc80{{ end }}'
           - '{{ if gt .Ahead 0 }}#b388ff{{ end }}'
           - '{{ if gt .Behind 0 }}#b388ff{{ end }}'
-        style: diamond
-        trailing_diamond: 
-        background: '#00c853'
-        foreground: '#23282b'
+        foreground: '#0e0b06'
+        background: '#678d58'
 
-      - background: '#910000'
-        foreground: '#ECEDEA'
-        style: diamond
-        leading_diamond: 
-        trailing_diamond: 
-        template: ' 󰯆 {{ reason .Code }} '
-        type: status
+      - type: status
+        template: ' {{ reason .Code }} '
+        style: powerline
+        powerline_symbol: 
+        background: '#9d400b'
+        foreground: '#ffffff'
 
   - alignment: right
     type: prompt
@@ -52,39 +50,39 @@ blocks:
         leading_diamond: 
         trailing_diamond: 
         template: '  {{ .FormattedMs }}s '
-        background: '#D9B0D6'
-        foreground: '#23282b'
+        background: '#678d58'
+        foreground: '#0e0b06'
 
       - type: dotnet
+        template: '  {{ .Full }} '
         style: diamond
         leading_diamond: 
-        foreground: '#ECEDEA'
         background: '#512bd4'
-        template: '  {{ .Full }} '
+        foreground: '#fefae0'
       - type: node
+        template: '  {{ .Full }} '
         style: diamond
         leading_diamond: 
         background: '#5fa04e'
-        foreground: "#ECEDEA"
-        template: '  {{ .Full }} '
+        foreground: '#fefae0'
       - type: npm
         style: diamond
         leading_diamond: 
-        background: "#ECEDEA"
-        foreground: "#ca0000"
+        background: '#fefae0'
+        foreground: '#ca0000'
       - type: rust
+        template: '  {{ .Full }}'
         style: diamond
         leading_diamond: 
-        foreground: '#193549'
         background: '#99908a'
-        template: '  '
+        foreground: '#0e0b06'
       - type: lua
         template: '  '
         style: diamond
         leading_diamond: 
         trailing_diamond: 
-        foreground: '#ECEDEA'
         background: blue
+        foreground: '#fefae0'
 
       - type: project
         style: diamond
@@ -100,8 +98,8 @@ blocks:
         template: ' {{ .CurrentDate | date .Format }} '
         style: diamond
         leading_diamond: 
-        background: '#4D8EC4'
-        foreground: '#23282b'
+        background: '#f5bb7d'
+        foreground: '#0e0b06'
 
       - type: time
         properties:
@@ -110,22 +108,26 @@ blocks:
         style: diamond
         leading_diamond: 
         trailing_diamond: '<transparent>'
-        background: '#748EB7'
-        foreground: '#23282b'
+        background: '#bc6c25'
+        foreground: '#0e0b06'
 
   - alignment: left
     newline: true
+    type: prompt
     segments:
       - type: status
         properties:
           always_enabled: true
-        template: "{{if .Root}} {{else}}󰘧 {{end}}"
-        foreground_templates:
-          - '{{ if gt .Code 0 }}#ff0000{{ end }}'
-        foreground: '#748EB7'
-
-    type: prompt
+        template: '{{if .Root}}󰀫 {{else}}󰘧 {{end}}'
+        foreground: '#678d58'
 
 console_title_template: '{{.Folder}}'
 
 version: 2
+
+# #23513c main
+# #678d58 secondary
+# #0e0b06 dark text
+# #fefae0 light text
+# #9d400b error bg
+# #0b689d error text
