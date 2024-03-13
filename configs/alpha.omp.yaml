@@ -86,7 +86,7 @@ blocks:
       - type: project
         style: diamond
         leading_diamond: 
-        background: '#ffeb3b'
+        background: '#FBE1C6'
         foreground: '#0e0b06'
         template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ .Name }}{{ end }}{{ end }} '
 
