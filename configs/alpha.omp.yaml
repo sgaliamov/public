@@ -6,9 +6,9 @@ blocks:
         properties:
           folder_separator_icon: '<transparent>  </>'
           style: agnoster_full
-        template: ' {{if .Root}}󱐋{{else}}{{end}} {{ .Path }} '
+        template: '{{if .Root}}󱐋{{else}}{{end}} {{ .Path }} '
         style: diamond
-        leading_diamond: '<transparent>'
+        leading_diamond: █
         trailing_diamond: 
         background: '#23513c'
         foreground: '#fefaea'
@@ -33,25 +33,25 @@ blocks:
         foreground: '#0e0b06'
         background: '#678d58'
 
+      - type: executiontime
+        properties:
+          style: dallas
+        style: diamond
+        trailing_diamond: 
+        template: '  {{ .FormattedMs }}s '
+        background: '#427aa1'
+        foreground: '#fefaea'
+
       - type: status
         template: ' {{ reason .Code }} '
-        style: powerline
-        powerline_symbol: 
+        style: diamond
+        trailing_diamond: 
         background: '#9d400b'
         foreground: '#fefaea'
 
   - alignment: right
     type: prompt
     segments:
-      - type: executiontime
-        properties:
-          style: dallas
-        style: diamond
-        leading_diamond: 
-        trailing_diamond: 
-        template: '  {{ .FormattedMs }}s '
-        background: '#678d58'
-        foreground: '#0e0b06'
 
       - type: dotnet
         template: '  {{ .Full }} '
@@ -80,17 +80,15 @@ blocks:
         template: '  '
         style: diamond
         leading_diamond: 
-        trailing_diamond: 
-        background: blue
+        background: '#02027d'
         foreground: '#fefaea'
 
       - type: project
         style: diamond
         leading_diamond: 
-        trailing_diamond: 
         background: '#ffeb3b'
         foreground: '#0e0b06'
-        template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ if not .Version }}󰣙 {{ end }}{{ .Name }}{{ end }}{{ end }} '
+        template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ .Name }}{{ end }}{{ end }} '
 
       - type: time
         properties:
@@ -104,10 +102,10 @@ blocks:
       - type: time
         properties:
           time_format: "\uf073 2006-01-02"
-        template: ' {{ .CurrentDate | date .Format }} '
+        template: ' {{ .CurrentDate | date .Format }}'
         style: diamond
         leading_diamond: 
-        trailing_diamond: '<transparent>'
+        trailing_diamond: █
         background: '#bc6c25'
         foreground: '#0e0b06'
 
