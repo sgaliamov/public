@@ -19,3 +19,7 @@ Add into `$PROFILE`:
 ``` pwsh
 oh-my-posh init pwsh --config "https://raw.githubusercontent.com/sgaliamov/public/master/configs/alpha.omp.yaml" | Invoke-Expression
 ```
+
+## To do
+
+1. use <https://ohmyposh.dev/docs/configuration/colors#defining-a-palette>.
