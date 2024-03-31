@@ -18,11 +18,11 @@ blocks:
           fetch_stash_count: true
           branch_icon: ' '
           fetch_status: true
-        template: ' {{ .HEAD }}{{
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ .HEAD }}{{
           if .Staging.Changed }}  {{ .Staging.String }}</>{{ end }}{{
           if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{
           if .Working.Changed }}  {{ .Working.String }}{{ end }}{{
-          if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+          if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}{{end}} '
         style: diamond
         trailing_diamond: 
         background_templates:
@@ -54,30 +54,34 @@ blocks:
     segments:
 
       - type: dotnet
-        template: '  {{ .Full }} '
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }} {{ .Full }}{{end}} '
         style: diamond
         leading_diamond: 
         background: '#512bd4'
         foreground: '#fefaea'
+
       - type: node
-        template: '  {{ .Full }} '
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }} {{ .Full }}{{end}} '
         style: diamond
         leading_diamond: 
         background: '#5fa04e'
         foreground: '#fefaea'
+
       - type: npm
         style: diamond
         leading_diamond: 
         background: '#fefaea'
         foreground: '#ca0000'
+
       - type: rust
-        template: '  {{ .Full }}'
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }} {{ .Full }}{{end}} '
         style: diamond
         leading_diamond: 
         background: '#99908a'
         foreground: '#0e0b06'
+        
       - type: lua
-        template: '  '
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{end}} '
         style: diamond
         leading_diamond: 
         background: '#02027d'
@@ -88,12 +92,12 @@ blocks:
         leading_diamond: 
         background: '#FBE1C6'
         foreground: '#0e0b06'
-        template: ' {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ .Name }}{{ end }}{{ end }} '
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ .Name }}{{ end }}{{ end }}{{ end }} '
 
       - type: time
         properties:
           time_format: "\ue641 15:04:05"
-        template: ' {{ .CurrentDate | date .Format }} '
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ .CurrentDate | date .Format }}{{end}} '
         style: diamond
         leading_diamond: 
         background: '#f5bb7d'
@@ -102,7 +106,7 @@ blocks:
       - type: time
         properties:
           time_format: "\uf073 2006-01-02"
-        template: ' {{ .CurrentDate | date .Format }}'
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ .CurrentDate | date .Format }}{{end}}'
         style: diamond
         leading_diamond: 
         trailing_diamond: █
