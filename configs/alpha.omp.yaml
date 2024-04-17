@@ -1,0 +1,134 @@
+blocks:
+  - alignment: left
+    type: prompt
+    segments:
+      - type: path
+        properties:
+          folder_separator_icon: '<transparent>  </>'
+          style: agnoster_full
+        template: '{{if .Root}}⛧︀{{else}}{{end}} {{ .Path }} '
+        style: diamond
+        leading_diamond: █
+        trailing_diamond: 
+        background: '#23513c'
+        foreground: '#fefaea'
+
+      - type: git
+        properties:
+          fetch_stash_count: true
+          branch_icon: ' '
+          fetch_status: true
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ .HEAD }}{{
+          if .Staging.Changed }}  {{ .Staging.String }}</>{{ end }}{{
+          if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{
+          if .Working.Changed }}  {{ .Working.String }}{{ end }}{{
+          if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}{{end}} '
+        style: diamond
+        trailing_diamond: 
+        background_templates:
+          - '{{ if or (.Working.Changed) (.Staging.Changed) }}#f7e2b2{{ end }}'
+          - '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ffcc80{{ end }}'
+          - '{{ if gt .Ahead 0 }}#b388ff{{ end }}'
+          - '{{ if gt .Behind 0 }}#b388ff{{ end }}'
+        foreground: '#0e0b06'
+        background: '#678d58'
+
+      - type: executiontime
+        properties:
+          style: dallas
+        style: diamond
+        trailing_diamond: 
+        template: '  {{ .FormattedMs }}s '
+        background: '#427aa1'
+        foreground: '#fefaea'
+
+      - type: status
+        template: ' {{ reason .Code }} '
+        style: diamond
+        trailing_diamond: 
+        background: '#9d400b'
+        foreground: '#fefaea'
+
+  - alignment: right
+    type: prompt
+    segments:
+
+      - type: dotnet
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }} {{ .Full }}{{end}} '
+        style: diamond
+        leading_diamond: 
+        background: '#512bd4'
+        foreground: '#fefaea'
+
+      - type: node
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }} {{ .Full }}{{end}} '
+        style: diamond
+        leading_diamond: 
+        background: '#5fa04e'
+        foreground: '#fefaea'
+
+      - type: npm
+        style: diamond
+        leading_diamond: 
+        background: '#fefaea'
+        foreground: '#ca0000'
+
+      - type: rust
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }} {{ .Full }}{{end}} '
+        style: diamond
+        leading_diamond: 
+        background: '#99908a'
+        foreground: '#0e0b06'
+
+      - type: lua
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{end}} '
+        style: diamond
+        leading_diamond: 
+        background: '#02027d'
+        foreground: '#fefaea'
+
+      - type: project
+        style: diamond
+        leading_diamond: 
+        background: '#FBE1C6'
+        foreground: '#0e0b06'
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }}{{ if .Name }}{{ .Name }}{{ end }}{{ end }}{{ end }} '
+
+      - type: time
+        properties:
+          time_format: "\ue641 15:04:05"
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ .CurrentDate | date .Format }}{{end}} '
+        style: diamond
+        leading_diamond: 
+        background: '#f5bb7d'
+        foreground: '#0e0b06'
+
+      - type: time
+        properties:
+          time_format: "\uf073 2006-01-02"
+        template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{ .CurrentDate | date .Format }}{{end}}'
+        style: diamond
+        leading_diamond: 
+        trailing_diamond: █
+        background: '#bc6c25'
+        foreground: '#0e0b06'
+
+  - alignment: left
+    newline: true
+    type: prompt
+    segments:
+      - type: status
+        properties:
+          always_enabled: true
+        template: ' '
+        foreground: '#678d58'
+
+console_title_template: '{{.Folder}}'
+
+version: 2
+
+# #23513c main
+# #678d58 secondary
+# #0e0b06 dark text
+# #fefaea light text
+# #9d400b error bg
