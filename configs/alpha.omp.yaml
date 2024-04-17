@@ -6,7 +6,7 @@ blocks:
         properties:
           folder_separator_icon: '<transparent>  </>'
           style: agnoster_full
-        template: '{{if .Root}}󱐋{{else}}{{end}} {{ .Path }} '
+        template: '{{if .Root}}⛧︀{{else}}{{end}} {{ .Path }} '
         style: diamond
         leading_diamond: █
         trailing_diamond: 
@@ -79,7 +79,7 @@ blocks:
         leading_diamond: 
         background: '#99908a'
         foreground: '#0e0b06'
-        
+
       - type: lua
         template: ' {{ if ne .Env.TERM_PROGRAM "vscode" }}{{end}} '
         style: diamond
