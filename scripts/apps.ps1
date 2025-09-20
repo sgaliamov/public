@@ -15,12 +15,12 @@ $apps = @(
     "Brave.Brave",
     "Fork.Fork",
     "FreeCAD.FreeCAD",
-    "Spotify.Spotify",
     "Microsoft.PowerToys",
     "Microsoft.WSL",
     "Microsoft.VisualStudioCode",
     "JetBrains.Rider",
-    "Rustlang.Rustup"
+    "Rustlang.Rustup",
+    "Alacritty.Alacritty"
 )
 
 foreach ($app in $apps) {
@@ -32,3 +32,5 @@ foreach ($app in $apps) {
         Write-Host "Failed to install $app" -ForegroundColor Red
     }
 }
+
+#    "Spotify.Spotify" failed on first run
