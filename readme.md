@@ -20,6 +20,12 @@ Add into `$PROFILE`:
 oh-my-posh init pwsh --config "https://raw.githubusercontent.com/sgaliamov/public/master/configs/alpha.omp.yaml" | Invoke-Expression
 ```
 
+## Alacritty
+
+``` pwsh
+New-Item -ItemType HardLink -Target '.\configs\alacritty.toml' -Path "$Env:APPDATA\alacritty\alacritty.toml"
+```
+
 ## To do
 
 1. use <https://ohmyposh.dev/docs/configuration/colors#defining-a-palette>.

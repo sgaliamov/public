@@ -1,26 +1,28 @@
-# PowerShell script to install specified applications using winget
+# probably need to run in pwsh core:
+# winget install Microsoft.PowerShell
+
 $apps = @(
-    "JGraph.Draw",
-    "Ditto.Ditto",
-    "Git.Git",
-    "icsharpcode.ILSpy",
-    "Microsoft.AzureCLI",
-    "Microsoft.PowerShell",
-    "CodecGuide.K-LiteCodecPack.Standard",
-    "Mega.MEGASync",
-    "SoftFever.OrcaSlicer",
-    "RamenSoftware.Windhawk",
-    "Chocolatey.Chocolatey",
-    "CatoNetworks.CatoClient",
+    "Alacritty.Alacritty",
     "Brave.Brave",
+    "CatoNetworks.CatoClient",
+    "Chocolatey.Chocolatey",
+    "CodecGuide.K-LiteCodecPack.Standard",
+    "Ditto.Ditto",
     "Fork.Fork",
     "FreeCAD.FreeCAD",
-    "Microsoft.PowerToys",
-    "Microsoft.WSL",
-    "Microsoft.VisualStudioCode",
+    "Git.Git",
+    "JGraph.Draw",
     "JetBrains.Rider",
-    "Rustlang.Rustup",
-    "Alacritty.Alacritty"
+    "Mega.MEGASync",
+    "Microsoft.AzureCLI",
+    "Microsoft.PowerToys",
+    "Microsoft.VisualStudioCode",
+    "Microsoft.WSL",
+    "RamenSoftware.Windhawk",
+    "Rustlang.Rustup", # needs build tools first
+    "SoftFever.OrcaSlicer",
+    "Spotify.Spotify",
+    "icsharpcode.ILSpy"
 )
 
 foreach ($app in $apps) {
@@ -28,9 +30,9 @@ foreach ($app in $apps) {
     winget install --id $app -e --silent --accept-package-agreements --accept-source-agreements
     if ($?) {
         Write-Host "$app installed successfully" -ForegroundColor Green
-    } else {
+    }
+    else {
         Write-Host "Failed to install $app" -ForegroundColor Red
     }
 }
 
-#    "Spotify.Spotify" failed on first run
