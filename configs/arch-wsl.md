@@ -77,6 +77,8 @@ exit
 wsl --manage archlinux --set-default-user archie
 ```
 
+`wsl ~ -u root` - start wsl with root.
+
 ## Configure
 
 ### Git
