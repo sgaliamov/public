@@ -10,6 +10,12 @@ wsl --install archlinux
 # need reboot?
 ```
 
+## Configure Alacritty
+
+Use `Hasklug Nerd Font Propo` font.
+
+Mono font shows small icons.
+
 ## Initial upgrade
 
 ``` sh
@@ -31,17 +37,11 @@ echo 'LANG=en_US.UTF-8' | sudo tee /etc/locale.conf
 
 ## Nushell
 
-Install nushell before users to be able set it as a default shell during the creation.
+Install nushell before adding the user to be able set it as a default shell during the creation.
 
 ``` sh
 # Install Nu and some other useful tools.
-pacman -S --noconfirm git xclip fd ripgrep sudo neovim which nushell zoxide
-
-# https://nanthony007.medium.com/the-best-fully-rust-based-terminal-setup-f6384ea3de1d
-# zellij
-# hyperfine: CLI benchmarking tool
-# exa
-# starship
+pacman -S --noconfirm git xclip fd ripgrep sudo neovim which nushell zoxide fzf
 
 # Tell Arch that Nu is a legal login shell
 which nu | sudo tee -a /etc/shells        # adds e.g. /usr/bin/nu to /etc/shells
@@ -77,15 +77,21 @@ exit
 wsl --manage archlinux --set-default-user archie
 ```
 
-## Configure git
+## Configure
+
+### Git
 
 ``` sh
 git config --global user.name "s. galiamov"
 git config --global user.email "6alyamov@gmail.com"
-git config --global credential.helper "/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe"
+git config --global credential.helper '!"/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe"'
 ```
 
-## Configure Nushell
+### Zoxide
+
+<https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation>
+
+### Nushell
 
 <https://www.nushell.sh/book/configuration.html>
 
@@ -101,7 +107,29 @@ $env.config.buffer_editor = 'nvim'
 $env.config.edit_mode = 'vi'
 ```
 
-## Neo vim
+### Starship
+
+<https://starship.rs/>
+
+``` sh
+curl -sS https://starship.rs/install.sh | sh
+config nu
+```
+
+todo: script to append
+
+Add to the file:
+``` sh
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+```
+
+And use preset:
+``` sh
+starship preset gruvbox-rainbow -o ~/.config/starship.toml
+```
+
+### Neo vim
 
 TBD
 
@@ -173,4 +201,17 @@ pacman -Syu                            # now a normal full upgrade works
 pacman-key --refresh-keys
 # Check
 timedatectl status                     # wrong clock = expired keys
+```
+
+### Fix DNS
+
+``` sh
+[ "nameserver 1.1.1.1", "nameserver 8.8.8.8" ] | str join (char nl) | save --force /etc/resolv.conf
+```
+
+And disable auto-generation in `/etc/wsl.conf`:
+
+``` ini
+[network]
+generateResolvConf = false
 ```
