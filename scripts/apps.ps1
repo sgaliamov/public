@@ -2,6 +2,8 @@
 # winget install Microsoft.PowerShell
 
 $apps = @(
+    "winget install Microsoft.DotNet.SDK.9",
+    "winget install Microsoft.DotNet.SDK.10",
     "Alacritty.Alacritty",
     "Brave.Brave",
     "CatoNetworks.CatoClient",
