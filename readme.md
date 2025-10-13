@@ -20,12 +20,16 @@ Add into `$PROFILE`:
 oh-my-posh init pwsh --config "https://raw.githubusercontent.com/sgaliamov/public/master/configs/alpha.omp.yaml" | Invoke-Expression
 ```
 
+## Custom PowerShell profile
+
+`PROFILE` is different for PowerShell and VS Code. Run in both environments:
+
+``` pwsh
+New-Item -ItemType HardLink -Target '.\scripts\Microsoft.PowerShell_profile.ps1' -Path $PROFILE
+```
+
 ## Alacritty
 
 ``` pwsh
 New-Item -ItemType HardLink -Target '.\configs\alacritty.toml' -Path "$Env:APPDATA\alacritty\alacritty.toml"
 ```
-
-## To do
-
-1. use <https://ohmyposh.dev/docs/configuration/colors#defining-a-palette>.
